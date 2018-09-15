@@ -5,13 +5,16 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import MainHeader from "./components/main-header/main-header";
   import store from './store';
+  import {Component} from 'vue-property-decorator';
 
-  export default {
+  @Component({
+    components: {MainHeader},
     store,
-    components: {MainHeader}
+  })
+  export default class App {
   }
 </script>
 

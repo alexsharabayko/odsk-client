@@ -4,9 +4,11 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: "main-logo"
+<script lang="ts">
+  import {Component} from 'vue-property-decorator';
+
+  @Component()
+  export default class MainLogo {
   }
 </script>
 

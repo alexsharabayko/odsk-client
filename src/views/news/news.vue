@@ -2,9 +2,12 @@
   
 </template>
 
-<script>
-  export default {
-    name: "news"
+<script lang="ts">
+
+  import {Component} from 'vue-property-decorator';
+
+  @Component({})
+  export default class News {
   }
 </script>
 

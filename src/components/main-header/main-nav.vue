@@ -5,9 +5,12 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: "main-nav"
+<script lang="ts">
+  import {Component} from 'vue-property-decorator';
+
+  @Component({
+  })
+  export default class MainNav {
   }
 </script>
 

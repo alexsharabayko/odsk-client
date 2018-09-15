@@ -1,16 +1,20 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import Vuex, {StoreOptions} from 'vuex';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+export interface RootState {
+  pageTitle: string;
+}
+
+const store: StoreOptions<RootState> = {
   state: {
-    name: 'Ololo',
+    pageTitle: 'ODSK',
   },
   mutations: {
-
   },
   actions: {
-
   },
-});
+};
+
+export default new Vuex.Store(store);
