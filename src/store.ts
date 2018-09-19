@@ -12,6 +12,9 @@ const store: StoreOptions<RootState> = {
     pageTitle: 'ODSK',
   },
   mutations: {
+    setPageTitle(state, payload) {
+      state.pageTitle = payload.title;
+    },
   },
   actions: {
   },

@@ -7,12 +7,10 @@
 
 <script lang="ts">
   import MainHeader from "./components/main-header/main-header";
-  import store from './store';
   import {Component} from 'vue-property-decorator';
 
   @Component({
     components: {MainHeader},
-    store,
   })
   export default class App {
   }

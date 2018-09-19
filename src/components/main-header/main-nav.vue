@@ -8,8 +8,7 @@
 <script lang="ts">
   import {Component} from 'vue-property-decorator';
 
-  @Component({
-  })
+  @Component
   export default class MainNav {
   }
 </script>
