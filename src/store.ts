@@ -13,10 +13,13 @@ const store: StoreOptions<RootState> = {
   },
   mutations: {
     setPageTitle(state, payload) {
-      state.pageTitle = payload.title;
+      state.pageTitle = payload;
     },
   },
   actions: {
+    fetchNews() {
+
+    },
   },
 };
 

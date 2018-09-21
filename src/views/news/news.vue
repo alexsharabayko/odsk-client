@@ -1,22 +1,39 @@
 <template>
-  <h2 class="title">
-    <span class="text">{{pageTitle}}</span>
-  </h2>
+  <div>
+    <h2 class="title">
+      <span class="text">{{pageTitle}}</span>
+    </h2>
 
-  <section class="content">
-  </section>
+    <section class="content">
+      <ul class="articles">
+        <li class="item">
+          <span>sdfdsf</span>
+        </li>
+      </ul>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
-
-
-  import {BasePageComponent} from "../../base/base-page-component";
-  import {Component} from "vue-property-decorator";
-  import {mixins} from "vue-class-component";
+  import {Component, Vue} from "vue-property-decorator";
+  import {Mutation, State} from "vuex-class";
+  import {RootState} from "../../store";
 
   @Component
-  export default class News extends mixins(BasePageComponent) {
-    public pageTitle = "Новости и объявления";
+  export default class News extends Vue {
+    @State('pageTitle')
+    private pageTitle: RootState;
+
+    @Mutation('setPageTitle')
+    private setPageTitle: Function;
+
+    mounted() {
+      console.log(this.pageTitle);
+
+      setTimeout(() => {
+        this.setPageTitle('New title');
+      }, 2000);
+    }
   }
 </script>
 
