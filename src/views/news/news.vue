@@ -1,44 +1,46 @@
 <template>
   <div>
-    <h2 class="title">
-      <span class="text">{{pageTitle}}</span>
+    <h2 class="main-title">
+      <span class="text">Новости и объявления</span>
     </h2>
 
-    <section class="content">
+    <div class="content">
       <ul class="articles">
-        <li class="item">
-          <span>sdfdsf</span>
+        <li class="item" v-for="newsItem of news">
+          <article class="news">
+            <span class="title">{{newsItem.title}}</span>
+            <img class="cover-image" :src="newsItem.coverPhotoUrl" alt="">
+            <p class="description">{{newsItem.shortDescription}}</p>
+          </article>
         </li>
       </ul>
-    </section>
+
+      <aside></aside>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
   import {Component, Vue} from "vue-property-decorator";
-  import {Mutation, State} from "vuex-class";
-  import {RootState} from "../../store";
+  import {Action, State} from "vuex-class";
+  import {NEWS_NAMESPACE, NewsItem} from "./news.typings";
 
   @Component
   export default class News extends Vue {
-    @State('pageTitle')
-    private pageTitle: RootState;
+    @State("news", {namespace: NEWS_NAMESPACE})
+    private news: NewsItem[];
 
-    @Mutation('setPageTitle')
-    private setPageTitle: Function;
+    @Action('fetchNews', {namespace: NEWS_NAMESPACE})
+    private fetchNews: Function;
 
     mounted() {
-      console.log(this.pageTitle);
-
-      setTimeout(() => {
-        this.setPageTitle('New title');
-      }, 2000);
+      this.fetchNews();
     }
   }
 </script>
 
 <style scoped lang="scss">
-  .title {
+  .main-title {
     margin-top: 50px;
     color: #333;
     font-size: 30px;
@@ -61,5 +63,14 @@
         background-color: #f9b707;
       }
     }
+  }
+
+  .content {
+    display: flex;
+    margin-top: 50px;
+  }
+
+  .articles {
+    width: 70%;
   }
 </style>
