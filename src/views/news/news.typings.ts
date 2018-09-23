@@ -1,11 +1,11 @@
-export interface NewsItem {
+export interface INewsItem {
   title: string;
   coverPhotoUrl: string;
   shortDescription: string;
 }
 
 export interface NewsState {
-  news: NewsItem[];
+  news: INewsItem[];
 }
 
 export const NEWS_NAMESPACE = 'news';
