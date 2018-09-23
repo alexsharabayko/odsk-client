@@ -23,14 +23,13 @@
 
   .logo-img {
     display: inline-block;
-    width: 45px;
+    width: 50px;
   }
 
   .title {
     display: inline-block;
     position: relative;
     left: 15px;
-    top: 4px;
     font-size: 40px;
     font-weight: bold;
   }

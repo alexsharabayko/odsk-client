@@ -9,9 +9,18 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: '',
+      redirect: '/news',
+    },
+    {
+      path: '/news',
+      name: 'news',
       component: News,
+    },
+    {
+      path: '/news/:id',
+      name: 'article',
+      component: () => import('./views/article/article.vue'),
     },
     {
       path: '/about',

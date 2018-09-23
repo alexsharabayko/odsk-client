@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <main-header></main-header>
-    <router-view/>
+    <transition name="fade">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
 <script lang="ts">
   import MainHeader from "./components/main-header/main-header";
-  import {Component} from 'vue-property-decorator';
+  import {Component} from "vue-property-decorator";
 
   @Component({
     components: {MainHeader},

@@ -1,4 +1,5 @@
 export interface INewsItem {
+  id: number;
   title: string;
   coverPhotoUrl: string;
   shortDescription: string;
