@@ -1,17 +1,17 @@
 <template>
   <div class="main-header">
-    <main-logo></main-logo>
+    <logo></logo>
     <main-nav></main-nav>
   </div>
 </template>
 
 <script lang="ts">
-  import MainLogo from "./main-logo";
   import MainNav from "./main-nav";
+  import Logo from "../logo/logo";
   import {Component} from "vue-property-decorator";
 
   @Component({
-    components: {MainNav, MainLogo},
+    components: {MainNav, Logo},
   })
   export default class MainHeader {
     mounted() {
@@ -22,6 +22,9 @@
 
 <style scoped lang="scss">
   .main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;

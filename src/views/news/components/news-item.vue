@@ -1,6 +1,6 @@
 <template>
   <article>
-    <h3 class="title">{{newsItem.title}}</h3>
+    <router-link to="/about" class="title">{{newsItem.title}}</router-link>
     <img class="cover-image" :src="newsItem.coverPhotoUrl" alt="">
     <p class="description">{{newsItem.shortDescription}}</p>
 
@@ -10,7 +10,7 @@
         <span class="author">Автор: Администрация</span>
       </div>
 
-      <a href="" class="read-more">Читать дальше</a>
+      <router-link to="/about" class="read-more">Читать дальше</router-link>
     </div>
   </article>
 </template>
@@ -34,12 +34,19 @@
   $yellow: #f9b707;
 
   .title {
+    display: block;
+    color: inherit;
     font-size: 24px;
     letter-spacing: 1px;
     line-height: 1.4;
     text-align: justify;
+    text-decoration: none;
     text-transform: uppercase;
-    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: $yellow;
+    }
   }
 
   .cover-image {
@@ -75,5 +82,10 @@
 
   .read-more {
     color: $yellow;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      padding-right: 5px;
+    }
   }
 </style>
