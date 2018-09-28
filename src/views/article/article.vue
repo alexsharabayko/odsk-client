@@ -1,12 +1,14 @@
 <template>
-  <p>hohoho</p>
+  <div class="page">hohoho {{id}}</div>
 </template>
 
 <script lang="ts">
-  import {Component} from "vue-property-decorator";
+  import {Component, Prop} from "vue-property-decorator";
 
   @Component
   export default class Article {
+    @Prop()
+    public id: string;
   }
 </script>
 

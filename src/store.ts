@@ -1,4 +1,6 @@
-import {news} from '@/views/news/news.store';
+import {ARTICLE_NAMESPACE} from '@/views/article/article.typings';
+import news from '@/views/news/news.store';
+import article from '@/views/article/article.store';
 import {NEWS_NAMESPACE} from '@/views/news/news.typings';
 import Vue from 'vue';
 import Vuex, {StoreOptions} from 'vuex';
@@ -20,6 +22,7 @@ const store: StoreOptions<RootState> = {
   },
   modules: {
     [NEWS_NAMESPACE]: news,
+    [ARTICLE_NAMESPACE]: article,
   },
 };
 

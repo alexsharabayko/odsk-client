@@ -37,5 +37,27 @@
     padding: 50px;
   }
 
+  .page-title {
+    color: #333;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
 
+    .text {
+      display: inline-block;
+      position: relative;
+      padding-top: 20px;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #f9b707;
+      }
+    }
+  }
 </style>

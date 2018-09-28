@@ -1,6 +1,6 @@
 <template>
   <article>
-    <router-link to="/about" class="title">{{newsItem.title}}</router-link>
+    <router-link class="title" :to="{path: newsItem.id.toString()}" append>{{newsItem.title}}</router-link>
     <img class="cover-image" :src="newsItem.coverPhotoUrl" alt="">
     <p class="description">{{newsItem.shortDescription}}</p>
 
@@ -16,15 +16,15 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop} from "vue-property-decorator";
+  import {Component, Prop, Vue} from "vue-property-decorator";
   import {INewsItem} from "../news.typings";
 
   @Component
-  export default class NewsItem {
+  export default class NewsItem extends Vue {
     @Prop()
     public newsItem: INewsItem;
 
-    mounted() {
+    public mounted() {
       console.log(this.newsItem);
     }
   }

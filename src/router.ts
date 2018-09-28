@@ -20,6 +20,7 @@ export default new Router({
     {
       path: '/news/:id',
       name: 'article',
+      props: true,
       component: () => import('./views/article/article.vue'),
     },
     {

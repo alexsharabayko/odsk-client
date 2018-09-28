@@ -1,23 +1,25 @@
 import {RootState} from '@/store';
-import {NewsState} from '@/views/news/news.typings';
+import {INewsItem, NewsState} from '@/views/news/news.typings';
 import Axios from 'axios';
-import {Module} from 'vuex';
+import {ActionContext, Module} from 'vuex';
 
-export const news: Module<NewsState, RootState> = {
+const newsStore: Module<NewsState, RootState> = {
   namespaced: true,
   state: {
     news: [],
   },
   mutations: {
-    setNews(state, news) {
-      state.news = news;
+    setNews(state: NewsState, newsData: INewsItem[]) {
+      state.news = newsData;
     },
   },
   actions: {
-    fetchNews(store) {
-      Axios.get('news-mock.json')
-        .then(r => r.data.data)
-        .then(news => store.commit('setNews', news));
+    fetchNews(store: ActionContext<NewsState, RootState>) {
+      Axios.get('mocks-json/news-mock.json')
+        .then((r) => r.data.data)
+        .then((newsData) => store.commit('setNews', newsData));
     },
   },
 };
+
+export default newsStore;

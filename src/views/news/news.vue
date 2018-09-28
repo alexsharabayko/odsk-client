@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h2 class="main-title">
+    <h2 class="page-title">
       <span class="text">Новости и объявления</span>
     </h2>
 
@@ -41,30 +41,6 @@
 </script>
 
 <style scoped lang="scss">
-  .main-title {
-    color: #333;
-    font-size: 30px;
-    font-weight: 700;
-    text-transform: uppercase;
-
-    .text {
-      display: inline-block;
-      position: relative;
-      padding-top: 20px;
-
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: #f9b707;
-      }
-    }
-  }
-
   .content {
     display: flex;
     justify-content: space-around;
