@@ -17,16 +17,12 @@
 
 <script lang="ts">
   import {Component, Prop, Vue} from "vue-property-decorator";
-  import {INewsItem} from "../news.typings";
+  import {INewsItem} from '../../../typings/news.typings';
 
   @Component
   export default class NewsItem extends Vue {
     @Prop()
     public newsItem: INewsItem;
-
-    public mounted() {
-      console.log(this.newsItem);
-    }
   }
 </script>
 

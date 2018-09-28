@@ -19,8 +19,8 @@
 <script lang="ts">
   import {Component} from "vue-property-decorator";
   import {Action, State} from "vuex-class";
+  import {FETCH_NEWS_ACTION, INewsItem, NEWS_STORE_NAMESPACE} from "../../typings/news.typings";
   import NewsItem from './components/news-item';
-  import {NEWS_NAMESPACE, INewsItem} from "./news.typings";
 
   @Component({
     components: {
@@ -28,10 +28,10 @@
     }
   })
   export default class News {
-    @State("news", {namespace: NEWS_NAMESPACE})
+    @State("news", {namespace: NEWS_STORE_NAMESPACE})
     private news: INewsItem[];
 
-    @Action('fetchNews', {namespace: NEWS_NAMESPACE})
+    @Action(FETCH_NEWS_ACTION, {namespace: NEWS_STORE_NAMESPACE})
     private fetchNews: Function;
 
     mounted() {
