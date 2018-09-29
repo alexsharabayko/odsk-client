@@ -1,4 +1,5 @@
 import {NewsItemContentItemType} from "../../typings/news.typings";
+import {NewsItemContentItemType} from "../../typings/news.typings";
 <template>
   <div class="page">
     <slot v-if="article">
@@ -23,6 +24,9 @@ import {NewsItemContentItemType} from "../../typings/news.typings";
           <slot v-if="isImageContent(contentItem)">
             <content-image :data="contentItem.data"></content-image>
           </slot>
+          <slot v-if="isLinkContent(contentItem)">
+            <content-link :data="contentItem.data"></content-link>
+          </slot>
         </li>
       </ul>
     </slot>
@@ -34,10 +38,11 @@ import {NewsItemContentItemType} from "../../typings/news.typings";
   import {Action, State} from "vuex-class";
   import {FETCH_ARTICLE_ACTION, FetchArticlePayload, INewsItem, NEWS_STORE_NAMESPACE, NewsItemContentItem, NewsItemContentItemType} from "../../typings/news.typings";
   import ContentImage from "./components/content-image";
+  import ContentLink from './components/content-link';
   import ContentText from "./components/content-text";
 
   @Component({
-    components: {ContentImage, ContentText}
+    components: {ContentLink, ContentImage, ContentText}
   })
   export default class Article {
     @Prop()
@@ -64,6 +69,10 @@ import {NewsItemContentItemType} from "../../typings/news.typings";
 
     public isImageContent(contentItem: NewsItemContentItem): boolean {
       return contentItem.type === NewsItemContentItemType.IMAGE;
+    }
+
+    public isLinkContent(contentItem: NewsItemContentItem): boolean {
+      return contentItem.type === NewsItemContentItemType.LINK;
     }
   }
 </script>

@@ -1,6 +1,7 @@
 export enum NewsItemContentItemType {
   PARAGRAPH = 'p',
   IMAGE = 'image',
+  LINK = 'link',
 }
 
 export enum NewsItemTextContentType {
@@ -24,9 +25,15 @@ export interface NewsItemImageContent {
   alt: string;
 }
 
+export interface NewsItemLinkContent {
+  title: string;
+  href: string;
+  target?: string;
+}
+
 export interface NewsItemContentItem {
   type: NewsItemContentItemType;
-  data: NewsItemTextContent[] | NewsItemImageContent[];
+  data: NewsItemTextContent[] | NewsItemImageContent[] | NewsItemLinkContent;
 }
 
 export interface INewsItemDto {

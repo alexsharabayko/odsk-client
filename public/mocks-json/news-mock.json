@@ -65,6 +65,14 @@
             }
           }
         ]
+      },
+      {
+        "type": "link",
+        "data": {
+          "title": "Дали грин-карту, посадили, депортировали",
+          "href": "https://www.onliner.by",
+          "target": "_blank"
+        }
       }
     ]
   },
