@@ -1,4 +1,23 @@
-export type NewsItemContentItemType = 'text' | 'image';
+export enum NewsItemContentItemType {
+  PARAGRAPH = 'p',
+  IMAGE = 'image',
+}
+
+export enum NewsItemTextContentType {
+  REGULAR = 'regular',
+  BOLD = 'bold',
+  ITALIC = 'italic',
+  LINK = 'link',
+}
+
+export interface NewsItemTextContent {
+  type: NewsItemTextContentType;
+  text: string;
+  link?: {
+    href: string;
+    target?: string;
+  };
+}
 
 export interface NewsItemImageContent {
   url: string;
@@ -7,7 +26,7 @@ export interface NewsItemImageContent {
 
 export interface NewsItemContentItem {
   type: NewsItemContentItemType;
-  data: string[] | NewsItemImageContent[];
+  data: NewsItemTextContent[] | NewsItemImageContent[];
 }
 
 export interface INewsItemDto {

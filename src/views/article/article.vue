@@ -1,3 +1,4 @@
+import {NewsItemContentItemType} from "../../typings/news.typings";
 <template>
   <div class="page">
     <slot v-if="article">
@@ -16,10 +17,10 @@
 
       <ul>
         <li class="content-item" v-for="contentItem of article.content">
-          <slot v-if="contentItem.type === 'text'">
+          <slot v-if="isParagraphContent(contentItem)">
             <content-text :data="contentItem.data"></content-text>
           </slot>
-          <slot v-if="contentItem.type === 'image'">
+          <slot v-if="isImageContent(contentItem)">
             <content-image :data="contentItem.data"></content-image>
           </slot>
         </li>
@@ -29,11 +30,11 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue, Watch} from "vue-property-decorator";
+  import {Component, Prop, Watch} from "vue-property-decorator";
   import {Action, State} from "vuex-class";
-  import {FETCH_ARTICLE_ACTION, FetchArticlePayload, INewsItem, NEWS_STORE_NAMESPACE} from "../../typings/news.typings";
-  import ContentImage from './components/content-image';
-  import ContentText from './components/content-text';
+  import {FETCH_ARTICLE_ACTION, FetchArticlePayload, INewsItem, NEWS_STORE_NAMESPACE, NewsItemContentItem, NewsItemContentItemType} from "../../typings/news.typings";
+  import ContentImage from "./components/content-image";
+  import ContentText from "./components/content-text";
 
   @Component({
     components: {ContentImage, ContentText}
@@ -53,8 +54,16 @@
       console.log(o.createDate);
     }
 
-    mounted(): void {
+    public mounted(): void {
       this.fetchArticle({id: parseInt(this.id, 10)});
+    }
+
+    public isParagraphContent(contentItem: NewsItemContentItem): boolean {
+      return contentItem.type === NewsItemContentItemType.PARAGRAPH;
+    }
+
+    public isImageContent(contentItem: NewsItemContentItem): boolean {
+      return contentItem.type === NewsItemContentItemType.IMAGE;
     }
   }
 </script>
