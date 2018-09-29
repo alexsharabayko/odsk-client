@@ -3,7 +3,7 @@ import {
   FETCH_ARTICLE_ACTION,
   FETCH_NEWS_ACTION,
   FetchArticlePayload,
-  INewsItem,
+  INewsItem, INewsItemDto,
   NewsState,
   SET_ARTICLE_MUTATION,
   SET_NEWS_MUTATION,
@@ -12,8 +12,12 @@ import Axios from 'axios';
 import {ActionContext, Module} from 'vuex';
 
 const fetchNewsMock = (): Promise<INewsItem[]> => {
-  return Axios.get<INewsItem[]>('/mocks-json/news-mock.json')
-    .then(r => r.data);
+  return Axios.get<INewsItemDto[]>('/mocks-json/news-mock.json')
+    .then(r => {
+      return r.data.map(d => {
+        return Object.assign({}, d, {createDate: new Date(d.createDate)});
+      });
+    });
 };
 
 export const newsStore: Module<NewsState, RootState> = {

@@ -1,8 +1,19 @@
+export interface INewsItemDto {
+  id: number;
+  title: string;
+  coverPhotoUrl: string;
+  shortDescription: string;
+  author: string;
+  createDate: string;
+}
+
 export interface INewsItem {
   id: number;
   title: string;
   coverPhotoUrl: string;
   shortDescription: string;
+  author: string;
+  createDate: Date;
 }
 
 export interface NewsState {

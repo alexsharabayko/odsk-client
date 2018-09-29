@@ -6,8 +6,8 @@
 
     <div class="footer">
       <div class="footer-left">
-        <span class="create-date">20.08.2018</span>
-        <span class="author">Автор: Администрация</span>
+        <span class="create-date">{{newsItem.createDate | dateFormat}}</span>
+        <span class="author">Автор: {{newsItem.author}}</span>
       </div>
 
       <router-link to="/about" class="read-more">Читать дальше</router-link>

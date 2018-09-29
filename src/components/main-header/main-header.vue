@@ -14,9 +14,6 @@
     components: {MainNav, Logo},
   })
   export default class MainHeader {
-    mounted() {
-      console.log(this);
-    }
   };
 </script>
 
