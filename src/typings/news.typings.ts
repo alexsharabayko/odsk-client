@@ -1,3 +1,15 @@
+export type NewsItemContentItemType = 'text' | 'image';
+
+export interface NewsItemImageContent {
+  url: string;
+  alt: string;
+}
+
+export interface NewsItemContentItem {
+  type: NewsItemContentItemType;
+  data: string[] | NewsItemImageContent[];
+}
+
 export interface INewsItemDto {
   id: number;
   title: string;
@@ -5,6 +17,7 @@ export interface INewsItemDto {
   shortDescription: string;
   author: string;
   createDate: string;
+  content: NewsItemContentItem[];
 }
 
 export interface INewsItem {
@@ -14,6 +27,7 @@ export interface INewsItem {
   shortDescription: string;
   author: string;
   createDate: Date;
+  content: NewsItemContentItem[];
 }
 
 export interface NewsState {

@@ -13,6 +13,17 @@
       <div>
         <img class="cover-img" :src="article.coverPhotoUrl" alt="">
       </div>
+
+      <ul>
+        <li class="content-item" v-for="contentItem of article.content">
+          <slot v-if="contentItem.type === 'text'">
+            <content-text :data="contentItem.data"></content-text>
+          </slot>
+          <slot v-if="contentItem.type === 'image'">
+            <content-image :data="contentItem.data"></content-image>
+          </slot>
+        </li>
+      </ul>
     </slot>
   </div>
 </template>
@@ -21,8 +32,12 @@
   import {Component, Prop, Vue, Watch} from "vue-property-decorator";
   import {Action, State} from "vuex-class";
   import {FETCH_ARTICLE_ACTION, FetchArticlePayload, INewsItem, NEWS_STORE_NAMESPACE} from "../../typings/news.typings";
+  import ContentImage from './components/content-image';
+  import ContentText from './components/content-text';
 
-  @Component
+  @Component({
+    components: {ContentImage, ContentText}
+  })
   export default class Article {
     @Prop()
     public id: string;
@@ -49,7 +64,7 @@
 
   .page {
     margin: 0 auto;
-    width: 75%;
+    width: 65%;
     padding-left: 0;
     padding-right: 0;
   }
@@ -80,5 +95,9 @@
   .cover-img {
     margin-top: 30px;
     width: 100%;
+  }
+
+  .content-item {
+    margin-top: 30px;
   }
 </style>
