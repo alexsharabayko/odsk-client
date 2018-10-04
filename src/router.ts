@@ -1,8 +1,7 @@
-import {SET_HEADER_MODE_MUTATION} from '@/typings/common.typings';
+import {APP_ELEMENT_MODE, SET_APP_ELEMENT_MODE_MUTATION, SET_HEADER_MODE_MUTATION} from '@/typings/common.typings';
 import store from '@/vuex/store';
 import Vue from 'vue';
 import Router from 'vue-router';
-import News from './views/news/news';
 
 Vue.use(Router);
 
@@ -17,7 +16,7 @@ const router = new Router({
     {
       path: '/news',
       name: 'news',
-      component: News,
+      component: () => import('./views/news/news.vue'),
     },
     {
       path: '/news/:id',
@@ -31,16 +30,22 @@ const router = new Router({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/about/about.vue'),
+    },
+    {
+      path: '/places',
+      name: 'places',
+      meta: {
+        appElementMode: APP_ELEMENT_MODE.HEIGHT_100,
+      },
+      component: () => import(/* webpackChunkName: "about" */ './views/places/places.vue'),
     },
   ],
 });
 
 router.afterEach((to) => {
-  store.commit(SET_HEADER_MODE_MUTATION, to.meta.isSimpleHeader);
+  store.commit(SET_HEADER_MODE_MUTATION, !!to.meta.isSimpleHeader);
+  store.commit(SET_APP_ELEMENT_MODE_MUTATION, to.meta.appElementMode);
 });
 
 export default router;

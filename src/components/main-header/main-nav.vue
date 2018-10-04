@@ -2,6 +2,7 @@
   <div class="main-nav">
     <router-link to="/" class="item">Новости</router-link>
     <router-link to="/about" class="item">Информация</router-link>
+    <router-link to="/places" class="item">Места</router-link>
   </div>
 </template>
 

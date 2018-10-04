@@ -1,0 +1,11 @@
+{
+  "initMapParameters": {
+    "coords": [53.86963177164129, 27.65569925308208],
+    "zoom": 14,
+    "controls": ["zoomControl"],
+    "mapType": "map"
+  },
+  "places": [
+
+  ]
+}
