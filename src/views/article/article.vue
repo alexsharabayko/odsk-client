@@ -37,22 +37,22 @@ import {NewsItemContentItemType} from "../../typings/news.typings";
   import {Component, Prop, Watch} from "vue-property-decorator";
   import {Action, State} from "vuex-class";
   import {FETCH_ARTICLE_ACTION, FetchArticlePayload, INewsItem, NEWS_STORE_NAMESPACE, NewsItemContentItem, NewsItemContentItemType} from "../../typings/news.typings";
-  import ContentImage from "./components/content-image";
-  import ContentLink from './components/content-link';
-  import ContentText from "./components/content-text";
+  import ContentImage from "./components/content-image.vue";
+  import ContentLink from "./components/content-link.vue";
+  import ContentText from "./components/content-text.vue";
 
   @Component({
     components: {ContentLink, ContentImage, ContentText}
   })
   export default class Article {
     @Prop()
-    public id: string;
+    public id!: string;
 
     @State("article", {namespace: NEWS_STORE_NAMESPACE})
-    private article: INewsItem;
+    private article!: INewsItem;
 
     @Action(FETCH_ARTICLE_ACTION, {namespace: NEWS_STORE_NAMESPACE})
-    private fetchArticle: (payload: FetchArticlePayload) => any;
+    private fetchArticle!: (payload: FetchArticlePayload) => any;
 
     @Watch("article")
     private callback(o: INewsItem): void {

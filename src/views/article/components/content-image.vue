@@ -23,9 +23,9 @@
   @Component
   export default class ContentImage {
     @Prop()
-    public data: NewsItemImageContent[];
+    public data!: NewsItemImageContent[];
 
-    public activeItem: NewsItemImageContent = null;
+    public activeItem!: NewsItemImageContent;
 
     get tapeStyle(): object {
       let index = this.data.indexOf(this.activeItem);

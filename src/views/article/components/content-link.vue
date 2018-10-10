@@ -12,7 +12,7 @@
   @Component
   export default class ContentLink {
     @Prop()
-    public data: NewsItemLinkContent;
+    public data!: NewsItemLinkContent;
   }
 </script>
 

@@ -12,7 +12,7 @@ import {NewsItemTextContentType} from "../../../typings/news.typings";
   @Component
   export default class ContentText {
     @Prop()
-    public data: NewsItemTextContent[];
+    public data!: NewsItemTextContent[];
 
     get viewData(): string {
       return this.data
@@ -29,7 +29,9 @@ import {NewsItemTextContentType} from "../../../typings/news.typings";
         case NewsItemTextContentType.ITALIC:
           return `<span class="text-italic">${item.text}</span>`;
         case NewsItemTextContentType.LINK:
-          return `<a class="color-yellow" href="${item.link.href}" target="_blank">${item.text}</a>`
+          return `<a class="color-yellow" href="${item.link.href}" target="_blank">${item.text}</a>`;
+        default:
+          return '';
       }
     }
   }

@@ -50,6 +50,8 @@
   import {Action, State} from "vuex-class";
   import {FETCH_ACTION, InitMapParameters, PLACES_STORE_NAMESPACE} from "../../typings/places.typings";
 
+  import ymaps from 'ymaps';
+
   const {yandexMap, ymapMarker} = require("vue-yandex-maps");
 
   @Component({
@@ -59,13 +61,16 @@
   })
   export default class Places {
     @State("initMapParameters", {namespace: PLACES_STORE_NAMESPACE})
-    public initMapParameters: InitMapParameters;
+    public initMapParameters!: InitMapParameters;
 
     @Action(FETCH_ACTION, {namespace: PLACES_STORE_NAMESPACE})
-    private fetchAll: Function;
+    private fetchAll!: Function;
+
+    constructor() {
+    }
 
     public onMapInit(instance: any): void {
-      instance.events.add("click", event => {
+      instance.events.add("click", (event: any) => {
         console.log(event.get("coords"));
         console.log(event.get("zoom"));
       });

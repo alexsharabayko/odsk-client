@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import {State} from 'vuex-class';
-  import MainNav from "./main-nav";
-  import Logo from "../logo/logo";
+  import MainNav from "./main-nav.vue";
+  import Logo from "../logo/logo.vue";
   import {Component} from "vue-property-decorator";
 
   @Component({
@@ -16,7 +16,7 @@
   })
   export default class MainHeader {
     @State('isSimpleHeader')
-    public isSimpleHeader: boolean;
+    public isSimpleHeader!: boolean;
   };
 </script>
 

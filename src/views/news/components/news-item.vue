@@ -22,7 +22,7 @@
   @Component
   export default class NewsItem extends Vue {
     @Prop()
-    public newsItem: INewsItem;
+    public newsItem!: INewsItem;
   }
 </script>
 

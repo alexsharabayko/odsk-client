@@ -20,7 +20,7 @@
   import {Component} from "vue-property-decorator";
   import {Action, State} from "vuex-class";
   import {FETCH_NEWS_ACTION, INewsItem, NEWS_STORE_NAMESPACE} from "../../typings/news.typings";
-  import NewsItem from './components/news-item';
+  import NewsItem from './components/news-item.vue';
 
   @Component({
     components: {
@@ -29,10 +29,10 @@
   })
   export default class News {
     @State("news", {namespace: NEWS_STORE_NAMESPACE})
-    private news: INewsItem[];
+    private news!: INewsItem[];
 
     @Action(FETCH_NEWS_ACTION, {namespace: NEWS_STORE_NAMESPACE})
-    private fetchNews: Function;
+    private fetchNews!: Function;
 
     mounted() {
       this.fetchNews();

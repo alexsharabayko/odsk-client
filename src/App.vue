@@ -12,7 +12,7 @@ import {APP_ELEMENT_MODE} from "./typings/common.typings";
 <script lang="ts">
   import {Component} from "vue-property-decorator";
   import {State} from "vuex-class";
-  import MainHeader from "./components/main-header/main-header";
+  import MainHeader from "./components/main-header/main-header.vue";
   import {APP_ELEMENT_MODE} from "./typings/common.typings";
 
   @Component({
@@ -20,7 +20,7 @@ import {APP_ELEMENT_MODE} from "./typings/common.typings";
   })
   export default class App {
     @State('appElementMode')
-    public appElementMode: APP_ELEMENT_MODE;
+    public appElementMode!: APP_ELEMENT_MODE;
 
     get appElementClass(): string[] {
       switch (this.appElementMode) {
