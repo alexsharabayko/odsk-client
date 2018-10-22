@@ -1,83 +1,49 @@
 <template>
   <div class="page">
-    <slot v-if="initMapParameters">
-      <yandex-map
-          :coords="initMapParameters.coords"
-          :zoom="initMapParameters.zoom"
-          :controls="initMapParameters.controls"
-          :map-type="initMapParameters.mapType"
-          @map-was-initialized="onMapInit"
-      >
-
-        <ymap-marker
-            marker-id="1"
-            marker-type="placemark"
-            :coords="initMapParameters.coords"
-            hint-content="Hint content 1"
-            :balloon="{header: 'header', body: 'body', footer: 'footer'}"
-            :icon="{color: 'green', glyph: 'home'}"
-            cluster-name="1"
-        ></ymap-marker>
-
-        <ymap-marker
-            marker-id="2"
-            marker-type="placemark"
-            :coords="[54.6, 39.8]"
-            hint-content="Hint content 1"
-            :balloon="{header: 'header', body: 'body', footer: 'footer'}"
-            :icon="{color: 'green', glyph: 'cinema'}"
-            cluster-name="1"
-        ></ymap-marker>
-
-        <ymap-marker
-            marker-id="3"
-            marker-type="circle"
-            :coords="[54.62896654088406, 39.731893822753904]"
-            circle-radius="1600"
-            hint-content="Hint content 1"
-            :marker-fill="{color: '#000000', opacity: 0.4}"
-            :marker-stroke="{color: '#ff0000', width: 5}"
-            :balloon="{header: 'header', body: 'body', footer: 'footer'}"
-        ></ymap-marker>
-
-      </yandex-map>
-    </slot>
+    <div class="map-wrapper" ref="map"></div>
   </div>
 </template>
 
 <script lang="ts">
-  import {Component} from "vue-property-decorator";
+  import {Component, Vue} from "vue-property-decorator";
   import {Action, State} from "vuex-class";
+  import {ymaps} from '../../libs/yandex-maps';
   import {FETCH_ACTION, InitMapParameters, PLACES_STORE_NAMESPACE} from "../../typings/places.typings";
+  const yandexMaps = require('ymaps').default;
 
-  import ymaps from 'ymaps';
+  declare const require: any;
 
-  const {yandexMap, ymapMarker} = require("vue-yandex-maps");
-
-  @Component({
-    components: {
-      yandexMap, ymapMarker
-    },
-  })
-  export default class Places {
+  @Component({})
+  export default class Places extends Vue {
     @State("initMapParameters", {namespace: PLACES_STORE_NAMESPACE})
     public initMapParameters!: InitMapParameters;
 
     @Action(FETCH_ACTION, {namespace: PLACES_STORE_NAMESPACE})
-    private fetchAll!: Function;
+    private fetchAll!: () => Promise<void>;
 
-    constructor() {
-    }
-
-    public onMapInit(instance: any): void {
-      instance.events.add("click", (event: any) => {
-        console.log(event.get("coords"));
-        console.log(event.get("zoom"));
-      });
-    }
+    private mapElement: HTMLDivElement;
+    private ymaps: ymaps;
 
     public mounted(): void {
-      this.fetchAll();
+      this.mapElement = this.$refs.map as HTMLDivElement;
+
+      const fetchPromise = this.fetchAll();
+      const mapsPromise = yandexMaps.load() as Promise<any>;
+
+      Promise.all([mapsPromise, fetchPromise])
+        .then(args => {
+          this.ymaps = args[0];
+          this.installMap();
+        });
+    }
+
+    private installMap(): void {
+      new this.ymaps.Map(this.mapElement, {
+        center: this.initMapParameters.coords,
+        zoom: this.initMapParameters.zoom,
+        type: 'yandex#map',
+        controls: ['zoomControl'],
+      }, {yandexMapDisablePoiInteractivity: true, suppressMapOpenBlock: true});
     }
   }
 </script>
@@ -90,5 +56,9 @@
     > section {
       flex-grow: 1;
     }
+  }
+
+  .map-wrapper {
+    flex-grow: 1;
   }
 </style>

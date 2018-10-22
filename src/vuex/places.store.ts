@@ -25,13 +25,12 @@ export const placesStore: Module<PlacesState, RootState> = {
     },
   },
   actions: {
-    [FETCH_ACTION](store: ActionContext<PlacesState, RootState>): void {
-      Axios.get<PlacesState>('/mocks-json/places-mock.json')
+    [FETCH_ACTION](store: ActionContext<PlacesState, RootState>): Promise<void> {
+      return Axios.get<PlacesState>('/mocks-json/places-mock.json')
         .then(r => r.data)
         .then(data => {
           store.commit(SET_PLACES_MUTATION, data.places);
           store.commit(SET_INIT_PARAMETERS_MUTATION, data.initMapParameters);
-          console.log('STORE COMMITS');
         });
     },
   },

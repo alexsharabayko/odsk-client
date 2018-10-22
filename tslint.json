@@ -5,7 +5,8 @@
   ],
   "linterOptions": {
     "exclude": [
-      "node_modules/**"
+      "node_modules/**",
+      "src/libs/**"
     ]
   },
   "rules": {
@@ -15,6 +16,7 @@
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "no-consecutive-blank-lines": false,
-    "arrow-parens": false
+    "arrow-parens": false,
+    "no-namespace": false
   }
 }
