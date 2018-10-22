@@ -1,6 +1,8 @@
 <template>
   <div class="page">
     <div class="map-wrapper" ref="map"></div>
+
+    <place-categories></place-categories>
   </div>
 </template>
 
@@ -9,11 +11,14 @@
   import {Action, State} from "vuex-class";
   import {ymaps} from '../../libs/yandex-maps';
   import {FETCH_ACTION, InitMapParameters, PLACES_STORE_NAMESPACE} from "../../typings/places.typings";
+  import PlaceCategories from './components/place-categories';
   const yandexMaps = require('ymaps').default;
 
   declare const require: any;
 
-  @Component({})
+  @Component({
+    components: {PlaceCategories}
+  })
   export default class Places extends Vue {
     @State("initMapParameters", {namespace: PLACES_STORE_NAMESPACE})
     public initMapParameters!: InitMapParameters;
@@ -50,6 +55,7 @@
 
 <style scoped lang="scss">
   .page {
+    position: relative;
     display: flex;
     padding: 0;
 

@@ -54,11 +54,6 @@ import {NewsItemContentItemType} from "../../typings/news.typings";
     @Action(FETCH_ARTICLE_ACTION, {namespace: NEWS_STORE_NAMESPACE})
     private fetchArticle!: (payload: FetchArticlePayload) => any;
 
-    @Watch("article")
-    private callback(o: INewsItem): void {
-      console.log(o.createDate);
-    }
-
     public mounted(): void {
       this.fetchArticle({id: parseInt(this.id, 10)});
     }
