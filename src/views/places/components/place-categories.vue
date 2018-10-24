@@ -11,13 +11,13 @@
 </template>
 
 <script lang="ts">
-  import {Component} from "vue-property-decorator";
-  import {State} from "vuex-class";
-  import {PlaceCategory, PLACES_STORE_NAMESPACE} from "../../../typings/places.typings";
+  import {Component} from 'vue-property-decorator';
+  import {State} from 'vuex-class';
+  import {PlaceCategory, PLACES_STORE_NAMESPACE} from '../../../typings/places.typings';
 
   @Component
   export default class PlaceCategories {
-    @State("categories", {namespace: PLACES_STORE_NAMESPACE})
+    @State('categories', {namespace: PLACES_STORE_NAMESPACE})
     public categories!: PlaceCategory[];
 
     public activeCategory: PlaceCategory = null;
@@ -35,7 +35,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import "../../../styles/vars";
+  @import '../../../styles/vars';
 
   .page-categories {
     position: absolute;

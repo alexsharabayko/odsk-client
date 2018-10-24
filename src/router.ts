@@ -11,7 +11,7 @@ const router = new Router({
   routes: [
     {
       path: '',
-      redirect: '/news',
+      redirect: '/places',
     },
     {
       path: '/news',
@@ -30,7 +30,7 @@ const router = new Router({
     {
       path: '/about',
       name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './views/about/about.vue'),
+      component: () => import(/* webpackChunkName: 'about' */ './views/about/about.vue'),
     },
     {
       path: '/places',
@@ -38,7 +38,7 @@ const router = new Router({
       meta: {
         appElementMode: APP_ELEMENT_MODE.HEIGHT_100,
       },
-      component: () => import(/* webpackChunkName: "about" */ './views/places/places.vue'),
+      component: () => import(/* webpackChunkName: 'about' */ './views/places/places.vue'),
     },
   ],
 });

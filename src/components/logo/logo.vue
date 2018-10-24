@@ -8,6 +8,8 @@
 <script lang="ts">
   import {Component} from "vue-property-decorator";
 
+  declare const require: any;
+
   @Component({})
   export default class Logo {
     public logoUrl = require("./logo.svg");

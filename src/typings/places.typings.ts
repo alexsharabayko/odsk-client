@@ -29,11 +29,19 @@ export interface InitMapParameters {
 export interface PlaceCategory {
   id: number;
   title: string;
+  color: string;
+}
+
+export interface Place {
+  id: number;
+  categoryId: number;
+  name: string;
+  coords: number[];
 }
 
 export interface PlacesState {
   initMapParameters: InitMapParameters | null;
-  places: any[];
+  places: Place[];
   categories: PlaceCategory[];
 }
 
