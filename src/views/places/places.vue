@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <slot v-if="initMapParameters">
-      <maps class="map-wrapper" :initParameters="initMapParameters" :places="places"></maps>
+      <maps class="map-wrapper" :initParameters="initMapParameters" :places="activePlaces"></maps>
     </slot>
 
     <place-categories></place-categories>
@@ -10,9 +10,9 @@
 
 <script lang="ts">
   import {Component, Vue} from "vue-property-decorator";
-  import {Action, State} from "vuex-class";
+  import {Action, Getter, State} from "vuex-class";
   import Maps from "../../components/maps/maps";
-  import {FETCH_ACTION, InitMapParameters, Place, PLACES_STORE_NAMESPACE} from "../../typings/places.typings";
+  import {FETCH_ACTION, GET_PLACES_OF_ACTIVE_CATEGORY, InitMapParameters, Place, PLACES_STORE_NAMESPACE} from "../../typings/places.typings";
   import PlaceCategories from "./components/place-categories";
 
   @Component({
@@ -22,11 +22,11 @@
     @State("initMapParameters", {namespace: PLACES_STORE_NAMESPACE})
     public initMapParameters!: InitMapParameters;
 
-    @State("places", {namespace: PLACES_STORE_NAMESPACE})
-    public places!: Place[];
-
     @Action(FETCH_ACTION, {namespace: PLACES_STORE_NAMESPACE})
     private fetchAll!: () => Promise<void>;
+
+    @Getter(GET_PLACES_OF_ACTIVE_CATEGORY, {namespace: PLACES_STORE_NAMESPACE})
+    public activePlaces: Place[];
 
     public mounted(): void {
       this.fetchAll();

@@ -2,7 +2,7 @@ import {APP_ELEMENT_MODE} from "./typings/common.typings";
 import {APP_ELEMENT_MODE} from "./typings/common.typings";
 <template>
   <div id="app" :class="['app'].concat(appElementClass)">
-    <!--<main-header></main-header>-->
+    <main-header></main-header>
     <transition name="fade">
       <router-view/>
     </transition>

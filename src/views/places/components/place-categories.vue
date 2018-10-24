@@ -12,20 +12,24 @@
 
 <script lang="ts">
   import {Component} from 'vue-property-decorator';
-  import {State} from 'vuex-class';
-  import {PlaceCategory, PLACES_STORE_NAMESPACE} from '../../../typings/places.typings';
+  import {Mutation, State} from "vuex-class";
+  import {PlaceCategory, PLACES_STORE_NAMESPACE, SET_ACTIVE_CATEGORY_MUTATION} from "../../../typings/places.typings";
 
   @Component
   export default class PlaceCategories {
     @State('categories', {namespace: PLACES_STORE_NAMESPACE})
     public categories!: PlaceCategory[];
 
-    public activeCategory: PlaceCategory = null;
+    @State('activeCategory', {namespace: PLACES_STORE_NAMESPACE})
+    public activeCategory!: PlaceCategory;
+
+    @Mutation(SET_ACTIVE_CATEGORY_MUTATION, {namespace: PLACES_STORE_NAMESPACE})
+    private setActiveCategoryMutation: Function;
 
     public optionsOpened: boolean = false;
 
     public setActiveCategory(category: PlaceCategory): void {
-      this.activeCategory = category;
+      this.setActiveCategoryMutation(Object.assign({}, category));
     }
 
     public toggleOpened(value?: boolean): void {
