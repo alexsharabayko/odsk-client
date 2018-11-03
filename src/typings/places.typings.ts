@@ -32,11 +32,32 @@ export interface PlaceCategory {
   color: string;
 }
 
+export enum PlaceWorkingHoursDeclineReason {
+  WEEKEND = 'weekend',
+}
+
+export interface IPlaceWorkingHours {
+  from: string;
+  to: string;
+  breaks?: IPlaceWorkingHours[];
+}
+
+export type PlaceWorkingHours = IPlaceWorkingHours | PlaceWorkingHoursDeclineReason;
+
+export interface PlaceContacts {
+  title: string;
+  phoneNumbers: string[];
+  emails?: string[];
+  skype?: string;
+}
+
 export interface Place {
   id: number;
   categoryId: number;
   name: string;
   coords: number[];
+  workingHours?: PlaceWorkingHours[];
+  contacts?: PlaceContacts[];
 }
 
 export interface PlacesState {

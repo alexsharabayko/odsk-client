@@ -4,6 +4,8 @@
       <maps class="map-wrapper" :initParameters="initMapParameters" :places="activePlaces"></maps>
     </slot>
 
+    <place-list class="place-list" :places="activePlaces"></place-list>
+
     <place-categories></place-categories>
   </div>
 </template>
@@ -14,9 +16,9 @@
   import Maps from "../../components/maps/maps";
   import {FETCH_ACTION, GET_PLACES_OF_ACTIVE_CATEGORY, InitMapParameters, Place, PLACES_STORE_NAMESPACE} from "../../typings/places.typings";
   import PlaceCategories from "./components/place-categories";
-
+  import PlaceList from './components/place-list';
   @Component({
-    components: {Maps, PlaceCategories}
+    components: {PlaceList, Maps, PlaceCategories}
   })
   export default class Places extends Vue {
     @State("initMapParameters", {namespace: PLACES_STORE_NAMESPACE})
@@ -35,6 +37,8 @@
 </script>
 
 <style scoped lang="scss">
+  $list-width: 25%;
+
   .page {
     position: relative;
     display: flex;
@@ -46,6 +50,12 @@
   }
 
   .map-wrapper {
-    flex-grow: 1;
+    width: 100% - $list-width;
+  }
+
+  .place-list {
+    width: $list-width;
+    flex: 1 1 auto;
+    overflow: auto;
   }
 </style>

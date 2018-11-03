@@ -17,6 +17,7 @@ const store: StoreOptions<RootState> = {
   state: {
     isSimpleHeader: false,
     appElementMode: APP_ELEMENT_MODE.DEFAULT,
+    dayNames: ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'],
   },
   mutations: {
     [SET_HEADER_MODE_MUTATION](state: RootState, payload: boolean): void {

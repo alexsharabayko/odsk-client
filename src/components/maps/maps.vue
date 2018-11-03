@@ -61,7 +61,7 @@
         zoom: this.initParameters.zoom,
         type: "yandex#map",
         controls: ["zoomControl"],
-      }, {yandexMapDisablePoiInteractivity: true, suppressMapOpenBlock: true});
+      }, {yandexMapDisablePoiInteractivity: false, suppressMapOpenBlock: true});
 
       this.currentMap.events.add("click", (event: ymaps.Event) => {
         console.log(event.get("coords"));
