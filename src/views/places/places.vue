@@ -4,7 +4,7 @@
       <maps class="map-wrapper" :initParameters="initMapParameters" :places="activePlaces"></maps>
     </slot>
 
-    <place-list class="place-list" :places="activePlaces"></place-list>
+    <!--<place-list class="place-list" :places="activePlaces"></place-list>-->
 
     <place-categories></place-categories>
   </div>

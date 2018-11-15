@@ -4,10 +4,12 @@
 
 <script lang="ts">
   import {Component, Prop, Vue, Watch} from "vue-property-decorator";
-  import {Getter} from 'vuex-class';
+  import {Getter} from "vuex-class";
   import {ymaps} from "../../libs/yandex-maps";
   import {CategoryByIdGetter, GET_CATEGORY_BY_ID, InitMapParameters, Place, PLACES_STORE_NAMESPACE} from "../../typings/places.typings";
-  import {getMarkerStr} from './maps.utils';
+  import {getComponentHTML} from "../../utils/get-component-html";
+  import MapsMarker from "./maps-marker";
+  import {colorLuminance} from "./maps.utils";
 
   const yandexMaps = require("ymaps").default;
 
@@ -61,7 +63,7 @@
         zoom: this.initParameters.zoom,
         type: "yandex#map",
         controls: ["zoomControl"],
-      }, {yandexMapDisablePoiInteractivity: false, suppressMapOpenBlock: true});
+      });
 
       this.currentMap.events.add("click", (event: ymaps.Event) => {
         console.log(event.get("coords"));
@@ -77,6 +79,8 @@
             hintContent: "Собственный значок метки",
             balloonContent: "Это красивая метка"
           }, {
+            cursor: "pointer",
+            draggable: true,
             iconLayout: this.getMarkerTemplate(this.categoryGetter(place.categoryId).color),
             iconOffset: [-24, -48],
           });
@@ -88,7 +92,12 @@
     }
 
     private getMarkerTemplate(color: string): ymaps.IClassConstructor {
-      return this.ymaps.templateLayoutFactory.createClass(getMarkerStr(color));
+      const propsData = {
+        color,
+        luminancedColor: colorLuminance(color, -0.1),
+      };
+
+      return this.ymaps.templateLayoutFactory.createClass(getComponentHTML(MapsMarker, propsData));
     }
   }
 </script>

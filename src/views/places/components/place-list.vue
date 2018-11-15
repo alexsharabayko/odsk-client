@@ -1,8 +1,8 @@
 <template>
   <ul>
     <li class="place" v-for="place of places">
-      <h4 :style="{color: 'green'}">
-        <font-awesome-icon icon="map-marker"></font-awesome-icon>
+      <h4>
+        <font-awesome-icon icon="map-marker" :color="getPlaceColor(place)"></font-awesome-icon>
         {{place.name}}
       </h4>
 
@@ -15,7 +15,8 @@
 
 <script lang="ts">
   import {Component, Prop} from "vue-property-decorator";
-  import {Place} from "../../../typings/places.typings";
+  import {Getter} from 'vuex-class';
+  import {CategoryByIdGetter, GET_CATEGORY_BY_ID, Place, PLACES_STORE_NAMESPACE} from "../../../typings/places.typings";
   import PlaceContactsComponent from './place-contacts';
   import PlaceWorkingHoursComponent from './place-working-hours';
   @Component({
@@ -24,6 +25,13 @@
   export default class PlaceList {
     @Prop()
     public places: Place[];
+
+    @Getter(GET_CATEGORY_BY_ID, {namespace: PLACES_STORE_NAMESPACE})
+    public categoryGetter: CategoryByIdGetter;
+
+    public getPlaceColor(place: Place): string {
+      return this.categoryGetter(place.categoryId).color;
+    }
   }
 </script>
 
