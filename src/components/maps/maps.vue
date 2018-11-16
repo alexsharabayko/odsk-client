@@ -9,7 +9,6 @@
   import {CategoryByIdGetter, GET_CATEGORY_BY_ID, InitMapParameters, Place, PLACES_STORE_NAMESPACE} from "../../typings/places.typings";
   import {getComponentHTML} from "../../utils/get-component-html";
   import MapsMarker from "./maps-marker";
-  import {colorLuminance} from "./maps.utils";
 
   const yandexMaps = require("ymaps").default;
 
@@ -85,6 +84,10 @@
             iconOffset: [-24, -48],
           });
 
+          placeMark.events.add('click', () => {
+            console.log('JJJ');
+          });
+
           this.currentMap.geoObjects
             .add(placeMark);
         });
@@ -94,7 +97,7 @@
     private getMarkerTemplate(color: string): ymaps.IClassConstructor {
       const propsData = {
         color,
-        luminancedColor: colorLuminance(color, -0.1),
+        size: 48,
       };
 
       return this.ymaps.templateLayoutFactory.createClass(getComponentHTML(MapsMarker, propsData));

@@ -37,7 +37,7 @@
 </script>
 
 <style scoped lang="scss">
-  $list-width: 25%;
+  $list-width: 0%;
 
   .page {
     position: relative;
