@@ -1,0 +1,78 @@
+{
+  "persons": [
+    {
+      "firstName": "Инна",
+      "middleName": "Геннадиевна",
+      "lastName": "Шостак",
+      "contacts": {
+        "phone": "+375292120592",
+        "email": "inna.shostak@mail.ru",
+        "skype": "sadasd.asdasd"
+      },
+      "position": "ceo",
+      "workingHours": {
+        "from": "9:00",
+        "to": "11:00"
+      },
+      "photoUrl": "https://www.freeiconspng.com/uploads/person-icon-8.png"
+    },
+    {
+      "firstName": "Жанна",
+      "middleName": "Ивановна",
+      "lastName": "Хойник",
+      "contacts": {
+        "phone": "+375292120592"
+      },
+      "position": "accountant",
+      "workingHours": {
+        "from": "9:00",
+        "to": "11:00"
+      },
+      "photoUrl": "https://www.freeiconspng.com/uploads/person-icon-8.png"
+    },
+    {
+      "firstName": "Иван",
+      "middleName": "Васильевич",
+      "lastName": "Димитров",
+      "contacts": {
+        "phone": "+375292120592",
+        "email": "dimitrov.i@mail.ru"
+      },
+      "position": "plumber",
+      "workingHours": {
+        "from": "9:00",
+        "to": "11:00"
+      },
+      "photoUrl": "https://www.freeiconspng.com/uploads/person-icon-8.png"
+    },
+    {
+      "firstName": "Григорий",
+      "middleName": "Иванович",
+      "lastName": "Мастеренко",
+      "contacts": {
+        "phone": "+375292120592",
+        "skype": "master2003"
+      },
+      "position": "electrician",
+      "workingHours": {
+        "from": "9:00",
+        "to": "11:00"
+      },
+      "photoUrl": "https://www.freeiconspng.com/uploads/person-icon-8.png"
+    },
+    {
+      "firstName": "Валентина",
+      "middleName": "Петрововна",
+      "lastName": "Григорович",
+      "contacts": {
+        "phone": "+375292120592"
+      },
+      "position": "cleaner",
+      "workingHours": {
+        "from": "9:00",
+        "to": "11:00"
+      },
+      "photoUrl": "https://www.freeiconspng.com/uploads/person-icon-8.png"
+    }
+  ]
+}

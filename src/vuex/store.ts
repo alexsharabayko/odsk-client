@@ -4,8 +4,10 @@ import {
   SET_APP_ELEMENT_MODE_MUTATION,
   SET_HEADER_MODE_MUTATION
 } from '@/typings/common.typings';
+import {INFO_STORE_NAMESPACE} from '@/typings/info.typings';
 import {NEWS_STORE_NAMESPACE} from '@/typings/news.typings';
 import {PLACES_STORE_NAMESPACE} from '@/typings/places.typings';
+import {infoStore} from '@/vuex/info.store';
 import {newsStore} from '@/vuex/news.store';
 import {placesStore} from '@/vuex/places.store';
 import Vue from 'vue';
@@ -31,6 +33,7 @@ const store: StoreOptions<RootState> = {
   modules: {
     [NEWS_STORE_NAMESPACE]: newsStore,
     [PLACES_STORE_NAMESPACE]: placesStore,
+    [INFO_STORE_NAMESPACE]: infoStore,
   },
 };
 

@@ -78,14 +78,15 @@
             hintContent: "Собственный значок метки",
             balloonContent: "Это красивая метка"
           }, {
-            cursor: "pointer",
-            draggable: true,
             iconLayout: this.getMarkerTemplate(this.categoryGetter(place.categoryId).color),
             iconOffset: [-24, -48],
-          });
-
-          placeMark.events.add('click', () => {
-            console.log('JJJ');
+            iconShape: {
+              type: 'Rectangle',
+              // The rectangle is defined as two points: the upper left and lower right.
+              coordinates: [
+                [12, 0], [36, 48]
+              ]
+            },
           });
 
           this.currentMap.geoObjects
