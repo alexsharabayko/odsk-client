@@ -35,6 +35,10 @@
 </script>
 
 <style scoped lang="scss">
+  .page-title {
+    margin-bottom: 50px;
+  }
+
   .persons {
     display: flex;
     flex-wrap: wrap;

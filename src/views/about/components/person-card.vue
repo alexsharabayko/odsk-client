@@ -84,7 +84,6 @@ import {CommunityPersonPosition} from "../../../typings/info.typings";
     width: $avaSize;
     height: $avaSize;
     border-radius: 50%;
-    border: 2px solid $yellow;
     font-size: 0;
 
     img {
