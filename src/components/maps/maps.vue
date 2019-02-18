@@ -75,7 +75,7 @@
 
         this.places.forEach(place => {
           const placeMark = new this.ymaps.Placemark(place.coords, {
-            hintContent: "Собственный значок метки",
+            hintContent: place.name,
             balloonContent: "Это красивая метка"
           }, {
             iconLayout: this.getMarkerTemplate(this.categoryGetter(place.categoryId).color),
